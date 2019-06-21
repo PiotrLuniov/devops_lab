@@ -11,4 +11,4 @@ print(arr)
 for i in range(lens):
     sumMain += arr[i][i]
     sumSecond += arr[i][lens - i - 1]
-print(math.fabs(sumMain-sumSecond))
+print(math.fabs(sumMain - sumSecond))
