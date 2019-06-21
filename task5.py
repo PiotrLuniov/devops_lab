@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-n = int(input())
+n = int(input('Enter number: '))
 
 ans = []
 
@@ -20,5 +20,5 @@ for num in range(1, n + 1):
     else:
         # Not divisible by 3 or 5, add the number
         ans.append(str(num))
-
-print(ans)
+string = '\n'.join(map(str, ans))
+print(string)

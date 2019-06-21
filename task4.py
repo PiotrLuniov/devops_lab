@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-ops = input().split()
+ops = input('Enter score: ').split()
 print(ops)
 stack = []
 for op in ops:

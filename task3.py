@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
-t = list(map(int, input().split()))
+count = int(input('Enter range: '))
+
+numbers = []
+for i in range(count):
+    number = int(input('Enter number: '))
+    numbers.append(int(number))
+
 
 simple = []
 for num in range(2, 10001):
@@ -12,5 +18,5 @@ for num in range(2, 10001):
         simple.append(int(num))
         string = ''.join(map(str, simple))
 
-for n in t:
+for n in numbers:
     print(string[n - 1:n])

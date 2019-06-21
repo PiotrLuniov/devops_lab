@@ -3,10 +3,10 @@
 import math
 sumMain = 0
 sumSecond = 0
-lens = int(input())
+lens = int(input('Enter range: '))
 arr = []
 for i in range(lens):
-    arr.append(list(map(int, input().split())))
+    arr.append(list(map(int, input('Enter matrix string: ').split())))
 print(arr)
 for i in range(lens):
     sumMain += arr[i][i]
