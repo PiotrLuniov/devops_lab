@@ -7,23 +7,23 @@ import os
 from datetime import datetime
 
 
-class ScriptClass:
+class SystemInfo:
     """Systeminfo script ver.1"""
-    cpu = psutil.cpu_percent(interval=1, percpu=False)
+
+    def __init__(self):
+        self.cpu = str(psutil.cpu_percent(interval=1, percpu=False))
+        self.vm = str(psutil.virtual_memory().total)
+        self.sw = str(psutil.swap_memory().total)
+        self.io = str(psutil.disk_io_counters().busy_time)
+        self.net = str(psutil.net_io_counters().bytes_sent)
 
     @staticmethod
     def func():
         print('Script finished successfully')
 
 
-print(ScriptClass.__doc__)
+print(SystemInfo.__doc__)
 
-end = ScriptClass()
-
-vm = psutil.virtual_memory().total
-sw = psutil.swap_memory().total
-io = psutil.disk_io_counters().busy_time
-net = psutil.net_io_counters().bytes_sent
 
 config = configparser.ConfigParser()
 config.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'config.ini'))
@@ -41,23 +41,23 @@ for i in range(1, int(snap) + 1):
         prints = json.dumps({
             "SNAPSHOT": str(i),
             "Timestamp": timestamp,
-            "CPU_load_info,%": ScriptClass.cpu,
-            "Memory_info": sw,
-            "Virtual_memory_info": vm,
-            "IO_info": io,
-            "Network_info": net
+            "CPU_load_info,%": SystemInfo().cpu,
+            "Memory_info": SystemInfo().sw,
+            "Virtual_memory_info": SystemInfo().vm,
+            "IO_info": SystemInfo().io,
+            "Network_info": SystemInfo().net
         }, indent=4)
         f.write(prints)
         time.sleep(int(interval))
     elif outputformat == "txt":
         prints = "SNAPSHOT :" + str(i) + " " + \
                  timestamp + ":" + \
-                 "CPU_load_info,%:" + str(ScriptClass.cpu) + " " + \
-                 "Memory_info:" + str(vm) + " " + \
-                 "Virtual_memory_info:" + str(sw) + " " + \
-                 "IO_info:" + str(io) + " " + \
-                 "Network_info:" + str(net) + "\n"
+                 "CPU_load_info,%:" + SystemInfo().cpu + " " + \
+                 "Memory_info:" + SystemInfo().vm + " " + \
+                 "Virtual_memory_info:" + SystemInfo().sw + " " + \
+                 "IO_info:" + SystemInfo().io + " " + \
+                 "Network_info:" + SystemInfo().net + "\n"
         f.write(prints)
         time.sleep(int(interval))
 
-end.func()
+SystemInfo().func()
