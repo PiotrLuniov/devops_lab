@@ -1,2 +1,0 @@
-configparser==3.7.4
-psutil==5.6.3
