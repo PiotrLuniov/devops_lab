@@ -13,7 +13,7 @@ import yaml
 pver = platform.python_version()
 
 # Virtual environment
-t = os.environ['VIRTUAL_ENV'].split('/')
+t = sys.prefix.split('/')
 pvirt = t[len(t) - 1]
 
 # Python executable location
@@ -34,7 +34,7 @@ for requirements in freeze(local_only=True):
 sploc = get_python_lib()
 
 print('Python version: ' + pver)
-print('Python virtual environment: ' + pvirt)
+print('Python virtual environment name: ' + pvirt)
 print('Python executable location: ' + pexec)
 print('Pip location: ' + piploc)
 print('PYTHONPATH: ' + ', '.join(ppath))
@@ -47,14 +47,14 @@ if format == "json":
     f = open('pythoninfo.' + format, 'w')
     prints = json.dumps({
         'Python version:': pver,
-        'Python virtual environment:': pvirt,
+        'Python virtual environment name:': pvirt,
         'Python executable location:': pexec,
         'Pip location:': piploc,
         'PYTHONPATH:': ppath,
         'Site-packages location:': sploc,
         'Installed packages': instpack
     }, indent=4)
-    f.write(str(prints))
+    f.write(prints)
     f.close()
 elif format == "yaml":
     prints = dict(
