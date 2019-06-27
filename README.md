@@ -4,14 +4,14 @@
 
 ####HowToUse
 
-`pr-stats -user <user> -repo <repo>` - get statistics of pull-request, where
-* `<user>` - username
-* `<repo>` - url of repository, for default obtain information from https://api.github.com/repos/alenaPy/devops_lab/pulls/42.
+`pr-stats -token <token> -all` - get statistics of pull-request
 
-####Additional Settings
 
-* `pr-stats.py -h` - get help
+####Main Keys
+
+* `pr-stats.py -h` - get help, to see all parameters
 * `pr-stats.py --version` - get program version
+
 
 
 
