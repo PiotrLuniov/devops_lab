@@ -21,6 +21,6 @@ You can define your own settings in configuration file `.../site-packages/system
 
 ####HowToUse
 
-To run application, from `.../site-packages` location in console enter `python systeminfo`. 
+To run application use `python -m systeminfo` command.
 
 
