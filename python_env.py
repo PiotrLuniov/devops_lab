@@ -3,7 +3,6 @@
 import sys
 import json
 import platform
-import os
 from distutils.sysconfig import get_python_lib
 from pip._internal.operations.freeze import freeze
 import subprocess
